@@ -1,0 +1,44 @@
+.bsd-signup-131 {
+  display: none;
+}
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+
+/* All Widget */
+body {
+  background: orange;
+  padding: 40px;
+}
+
+input {
+  margin: 10px 0px;
+  width: 100%;
+}
+
+input[type="checkbox"] {
+  float: left;
+  margin: 0px 5px 0px 0px;
+  width: auto;
+}
+
+input[type="submit"] {
+  border: none;
+  background: #fff;
+  margin: 10px auto;
+  max-width: 300px;
+  width: 100%;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.widget {
+  border: 1px solid #000;
+  margin: auto;
+  max-width: 300px;
+  padding: 30px 20px;
+  width: 100%;
+}

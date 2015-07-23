@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
+</head>
+<body class="builder">
+    <h1>BSD Widget Builder</h1>
+    <div class="content">
+        <div class="panel">
+            <nav>
+                <a href="/location" class="steps" id="step1">Language</a>
+                <a href="/location" class="steps" id="step2">Fields</a>
+                <a href="/location" class="steps" id="step3">Design</a>
+            </nav>
+            <div class="panel__options">
+                <form>
+                    <ul>
+                        <li class="form-entry cf">
+                            <label>Title</label>
+                            <input type="text" name="title" id="title">
+                        </li>
+                        <li class="form-entry cf">
+                            <label>Description</label>
+                            <textarea></textarea>
+                        </li>
+                        <li class="form-entry cf">
+                            <label>Button</label>
+                            <input type="text" name="button" id="button">
+                        </li>
+                        <li class="form-entry cf">
+                            <label>That <em>fine</em> print</label>
+                            <textarea></textarea>
+                        </li>
+                    </ul>
+                    <button id="step-1__next">Next &#10095;</button>
+                </form>
+            </div>
+        </div>
+        <div class="preview">
+            <h2>Preview</h2>
+            <div class="preview__widget">
+                <div class="form__content">
+                    <h3 id="widget__title">Title</h3>
+                    <p id="widget__description">Description</p>
+                    <input type="text" id="form-field-1" placeholder="First Name">
+                    <input type="text" id="form-field-2" placeholder="Last Name">
+                    <input type="email" id="form-field-3" placeholder="Email">
+                    <input type="text" id="form-field-4" placeholder="Zip">
+                    <a id="widget__button">Submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

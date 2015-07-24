@@ -18,9 +18,6 @@
 	padding: 0.8em 3%;
 	margin-top: 0;
 }
-.widget-form-error {
-	color: #ed2f69;
-}
 
 .widget-form-above {
 	color: #453e3e;
@@ -53,6 +50,9 @@
 .widget-form input[type='text']:focus {
 	border: 2px solid #3fd5b7;
 	outline: none;
+}
+.widget-form input[type='text'].widget-form-error {
+	border: 2px solid #ed2f69;
 }
 .widget-form input[type='submit'] {
 	background: #453e3e;

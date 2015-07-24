@@ -49,17 +49,28 @@ button {
 }
 
 .builder {
+  -webkit-font-smoothing: antialiased;
   background: url(/images/page-bg.jpg);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.builder h1 {
+.builder header {
   background: #fff;
-  border-bottom: 1px solid #333;
-  color: #1d24ab;
-  margin: 0px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   padding: 40px;
 }
 
+.builder h1 {
+  color: #1d24ab;
+  font-size: 25px;
+  line-height: 1;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.builder h2 {
+  margin-top: 0;
+}
 
 .code-snippet {
   background: #fff;
@@ -68,28 +79,31 @@ button {
   width: 100%;
 }
 
-.code-snippet textarea {
+.code-snippet h4 {
+  margin-top: 0;
+}
+
+.code-snippet pre {
   background: #e8eff6;
-  height: 200px;
-  padding-bottom: 60px;
-  width: 100%;
+  font-size: 12px;
+  padding: 2em 1em 1em;
 }
 
 .col-1 {
   float: left;
   margin-bottom: 60px;
-  margin-right: 30px;
+  width: 40%;
 }
 
 .col-2 {
-  float: left;
-  margin-bottom: 60px;
-  max-width: 870px;
-  width: 100%;
+  float: right;
+  width: 55%;
 }
 
 .content {
-  padding: 40px;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 40px 0;
 }
 
 .form-entry {
@@ -97,7 +111,9 @@ button {
 }
 
 .form-entry label {
+  display: inline-block;
   font-weight: bold;
+  line-height: 34px;
   margin-top: 10px;
 }
 
@@ -108,18 +124,9 @@ button {
 
 .form-entry input {
   background: #e8eff6;
-  border-left: 1px solid #b5c0cc;
-  border-top: 1px solid #b5c0cc;
+  border: 0;
   float: right;
-  width: 200px;
-}
-
-.form-entry select {
-  background: #e8eff6;
-  border: none;
-  border-left: 1px solid #b5c0cc;
-  border-top: 1px solid #b5c0cc;
-  float: right;
+  padding: 8px 10px;
   width: 200px;
 }
 
@@ -141,6 +148,7 @@ button {
   border: 1px solid #ccc;
   max-width: 500px;
   margin-right: 30px;
+  margin-bottom: 20px;
   padding: 30px;
   width: 100%;
 }
@@ -153,25 +161,11 @@ button {
   background: #fff;
   border: 1px solid #ccc;
   padding: 20px 20px;
-  margin-bottom: 20px;
-}
-
-.preview h2 {
-  color: #1d24ab;
 }
 
 .preview__widget {
   background: #ccc;
-  border: 1px solid #333;
   padding: 20px 20px;
-}
-
-.preview__widget h3 {
-  color: #fff;
-}
-
-.preview__widget p {
-  color: #fff;
 }
 
 .form__content {

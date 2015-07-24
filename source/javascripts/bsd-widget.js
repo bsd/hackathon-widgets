@@ -62,20 +62,24 @@ $(document).ready(function(){
 			    }   
 			];
 
-			//TODO: Include JS to post to signup API and handle submit via signup API
-
 			//TODO: Add petition counter
 
 			//Create form markup based on form fields
 			var widgetMarkup = $('<div/>', {
 				    class: 'widget-wrapper',
-				    html: '<form action="' + widgetAction + '" name="signup" id="signup" class="widget-form" method="post"></form>'
+				    html: '<form action="' + widgetAction + '" name="signup" id="signup" class="widget-form" method="post" novalidate></form>'
 				});
 			widgetMarkup.prepend('<div class="widget-form-above"><p class="widget-title">' + widgetTitle + '</p></div>');
 			//widgetMarkup.find('.widget-form-above').append('<p class="widget-description">We want to stamp out late, lost and damaged deliveries. We’re calling on retailers to keep you better informed about your delivery. We need your support to ensure your deliveries are first class, first time.</p>');
 			for(var i=0; i < fields.length; i++){
+				var input;
+				if(fields[i].required){
+					input = '<input type="' + fields[i].type + '" name="' + fields[i].name + '" placeholder="' + fields[i].label + '" required />';
+				} else {
+					input = '<input type="' + fields[i].type + '" name="' + fields[i].name + '" placeholder="' + fields[i].label + '" />';
+				}
 				widgetMarkup.find('.widget-form')
-							.append('<input type="' + fields[i].type + '" name="' + fields[i].name + '" placeholder="' + fields[i].label + '" required="' + fields[i].required + '" />');
+							.append(input);
 			}
 			widgetMarkup.find('.widget-form')
 						.append('<input type="submit" value="Submit" />')
@@ -83,6 +87,25 @@ $(document).ready(function(){
 			widgetMarkup.css('background',widgetBg).find('.widget-title').css('color',widgetColor);
 			widgetMarkup.find('.widget-form input[type="submit"]').css('background',widgetColor).css('color',widgetBg);
 			widget.replaceWith(widgetMarkup);
+
+			//TODO: Include JS to post to signup API and handle submit via signup API
+
+			$('#signup').on('submit',function(e){
+				e.preventDefault();
+				var form = $(this),
+					errors = 0;
+				form.closest('.widget-wrapper').find('.widget-error').remove();
+				form.find('input').removeClass('widget-form-error');
+				form.find('input[type=text]').each(function(){
+					if($(this).attr('required') && !$(this).val()) {
+						if(errors === 0){
+							form.closest('.widget-wrapper').prepend("<p class='widget-error'>Oops, looks like something's missing. We just need a bit more here:</p>");
+							errors++;
+						}
+						$(this).addClass('widget-form-error');
+					}
+				});
+			});
 
 		}
 

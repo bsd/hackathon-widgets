@@ -21,5 +21,3 @@ $(document).ready(function(){
 	});
 
 });
-
-//TODO: Replace defaults if a field is empty

@@ -69,11 +69,11 @@ $(document).ready(function(){
 		if(widgetType === 'advocacy'){
 
 			//Create form markup
-			widget.replaceWith('<div class="widget-wrapper"><form action="" method="get" id="speakout" class="widget-form"><input type="text" name="zip" id="zip" placeholder="Postal Code"><input type="hidden" name="js" id="js" value="false"><input type="submit" value="Participate"></form></div>');
+			widget.replaceWith('<div class="widget-wrapper"><div class="widget-form-above"><p class="widget-title">Help stamp out dodgy deliveries</p><p>We want to stamp out late, lost and damaged deliveries. We’re calling on retailers to keep you better informed about your delivery. We need your support to ensure your deliveries are first class, first time.</p></div><form action="" method="get" id="speakout" class="widget-form"><input type="text" name="zip" id="zip" placeholder="Postal Code"><input type="hidden" name="js" id="js" value="false"><input type="submit" value="Go"></form></div>');
 
 			$('#speakout').submit(function(e){
 				e.preventDefault();
-				//TODO: Validation
+				$(this).closest('.widget-wrapper').prepend("<p class='widget-error'>Oops, looks like something's missing. We just need a bit more here:</p>");
 			});
 		}
 

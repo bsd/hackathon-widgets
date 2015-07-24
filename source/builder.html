@@ -123,13 +123,22 @@
                 url: '/form-grab.php',
                 method: "GET",
                 dataType: "json",
-                success : function(r) {
-                    var data = r.data;
-                    console.log(data);
-                    // var result = data.filter(function( obj ) {
-                    //   return obj.chapter_id == 2;
-                    // });
-                    // console.log(result);
+                data: { formID : "131" },
+                success : function(data) {
+                    // var data = r.data;
+                    // console.table(data.signup_form_field);
+                    var fields = data.data.signup_form_field;
+                    for(field in fields) {
+                        if (fields[field].is_shown === "1") {
+                            console.log(fields[field]);
+                        }
+                        // console.log(fields[field]);
+                    }
+                    var result = data.filter(function( obj ) {
+                      return obj.chapter_id == 2;
+                    });
+                    console.log(result);
+
                 },
                 error : function(r2) {
                     console.log('Error...');

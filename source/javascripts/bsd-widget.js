@@ -7,10 +7,8 @@ $('head').append('<link rel="stylesheet" href="/stylesheets/widgets.css" type="t
 
 $(document).ready(function(){
 
-	var scriptEls = document.getElementsByTagName( 'script' );
-	var thisScriptEl = scriptEls[scriptEls.length - 1];
-	var scriptPath = thisScriptEl.src;
-	var scriptFolder = scriptPath.substr(0, scriptPath.lastIndexOf( '/' )+1 );
+	var scriptEl = document.getElementById( 'boss-script' );
+	var scriptPath = scriptEl.src;
 
 	var params = new Array();
 	var self = scriptPath;

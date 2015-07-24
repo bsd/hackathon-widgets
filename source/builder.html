@@ -18,80 +18,43 @@
     </header>
     <div class="content cf">
         <div class="col-1">
-            <div class="panel cf">
+            <div class="panel panel__form cf">
+                <form>
+                    <h2>Get Started</h2>
+                    <div class="panel__fields">
+                        <ul>
+                            <li class="form-entry cf">
+                                <label for="url">Form ID</label>
+                                <input type="text" id="tools-form-id" name="formId" placeholder="Form ID">
+                            </li>
+                            <li class="form-entry cf">
+                            <button id="get-fields">Go</button>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+            <div class="panel panel__settings cf">
                 <form>
                     <h2>Settings</h2>
                     <div class="panel__fields">
                         <ul>
                             <li class="form-entry cf">
-                                <label for="url">Form ID</label>
-                                <input type="text" name="formId" placeholder="Form ID">
-                            </li>
-                            <li class="form-entry cf">
                                 <label for="title">Title</label>
                                 <input type="text" name="title" id="title" placeholder="Title" value="Title">
                             </li>
-                            <!--<li class="form-entry cf">
-                                <label for="description">Description</label>
-                                <input type="text" name="description" id="description" placeholder="Description" value="Description">
-                            </li>
-                            <li class="form-entry cf">
-                                <label for="fine-print">Fine print</label>
-                                <input type="text" name="fine-print" id="fine-print">
-                            </li>-->
                         </ul>
                     </div>
                     <div class="panel__design">
                         <ul>
-                            <!--<li class="form-entry cf">
-                                <label>Font</label>
-                                <select name="fonts" id="font-picker">
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                    <option value="lato">Lato</option>
-                                </select>
-                            </li>-->
                             <li class="form-entry cf">
                                 <label for="colorpickerField1">Background Color</label>
                                 <input type="text" size="6" name="bg" class="style-field" id="colorpickerField1" value="ffffff">
                             </li>
-                            <!--<li class="form-entry cf">
-                                <label for="colorpickerField1">Title font Color</label>
-                                <input type="text" maxlength="6" size="6" id="colorpickerField2" value="00ff00">
-                            </li>-->
                             <li class="form-entry cf">
                                 <label for="colorpickerField1">Font Color</label>
                                 <input type="text" size="6" name="color" class="style-field" id="colorpickerField3" value="453e3e">
                             </li>
-                            <!--<li class="form-entry cf">
-                                <label for="line-height">Line Height</label>
-                                <input type="number" name="line-height" id="line-height">
-                            </li>
-                            <li class="form-entry cf">
-                                <label for="font-size">Font Size</label>
-                                <input type="number" name="font-size" id="font-size">
-                            </li>
-                            <li class="form-entry cf">
-                                <label for="background-image">Background Image</label>
-                                <input type="text" name="background-image" id="background-image">
-                            </li>-->
                         </ul>
                     </div>
                 </form>
@@ -106,12 +69,36 @@
         <div class="col-2">
             <div class="preview">
                 <h2>Preview</h2>
-                <div class="preview__widget">
-                    <a href="#" class="bsd-widget" data-type="form">Title</a>
-                    <script src="/javascripts/bsd-widget.js?id=131&bg=ffffff&color=453e3e"></script>
-                </div>
+                <div class="preview__widget"></div>
             </div>
         </div>
     </div>
+
+    <script>
+    $(document).ready(function(){
+        $('.code-snippet, .panel__settings, .preview').hide();
+        $('#get-fields').on('click',function(e){
+            e.preventDefault();
+            var formId = $('#tools-form-id').val(),
+                embedCode = '<a href="#" class="bsd-widget" data-type="form">Title</a>';
+
+            s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.src = '/javascripts/bsd-widget.js?id=' + formId + '&bg=ffffff&color=453e3e';
+            s.id = 'boss-script';
+
+            $('.preview__widget').append(embedCode).append(s);
+
+            var checkExist = setInterval(function() {
+               if ($('.widget-wrapper').length) {
+                  $('.panel__form').hide();
+                $('.code-snippet, .panel__settings, .preview').show();
+                  clearInterval(checkExist);
+               }
+            }, 100);
+
+        });
+    });
+    </script>
 </body>
 </html>

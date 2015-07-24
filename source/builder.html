@@ -11,13 +11,48 @@
     <div class="content">
         <div class="col-1">
             <div class="panel">
-                <nav>
+                <!-- <nav>
                     <a href="/location" class="steps" id="step1">Language</a>
                     <a href="/location" class="steps" id="step2">Fields</a>
                     <a href="/location" class="steps" id="step3">Design</a>
-                </nav>
-                <div class="panel__options">
-                    <form>
+                </nav> -->
+                <h3>1. Add Fields</h3>
+                <form>
+                    <div class="panel__options">
+                        <ul>
+                            <li class="form-entry cf">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="title-switch" checked>
+                                    <label class="onoffswitch-label" for="title-switch"></label>
+                                </div>
+                                <label>Title</label>
+                            </li>
+                            <li class="form-entry cf">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="desc-switch" checked>
+                                    <label class="onoffswitch-label" for="desc-switch"></label>
+                                </div>
+                                <label>Description</label>
+                            </li>
+                            <li class="form-entry cf">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="button-switch" checked>
+                                    <label class="onoffswitch-label" for="button-switch"></label>
+                                </div>
+                                <label>Button</label>
+                            </li>
+                            <li class="form-entry cf">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="fine-switch" checked>
+                                    <label class="onoffswitch-label" for="fine-switch"></label>
+                                </div>
+                                <label>The fine print</label>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                    <h3>2. Add Text</h3>
+                    <div class="panel__options">
                         <ul>
                             <li class="form-entry cf">
                                 <label>Title</label>
@@ -25,20 +60,41 @@
                             </li>
                             <li class="form-entry cf">
                                 <label>Description</label>
-                                <textarea></textarea>
+                                <input type="text" name="description" id="description">
                             </li>
                             <li class="form-entry cf">
                                 <label>Button</label>
                                 <input type="text" name="button" id="button">
                             </li>
                             <li class="form-entry cf">
-                                <label>That <em>fine</em> print</label>
-                                <textarea></textarea>
+                                <label>The fine print</label>
+                                <input type="text" name="fine-print" id="fine-print">
                             </li>
                         </ul>
-                        <button id="step-1__next">Next &#10095;</button>
-                    </form>
-                </div>
+                    </div>
+                    <h3>3. Design</h3>
+                    <div class="panel__options">
+                        <ul>
+                            <li class="form-entry cf">
+                                <label>Title</label>
+                                <input type="text" name="title" id="title">
+                            </li>
+                            <li class="form-entry cf">
+                                <label>Description</label>
+                                <input type="text" name="description" id="description">
+                            </li>
+                            <li class="form-entry cf">
+                                <label>Button</label>
+                                <input type="text" name="button" id="button">
+                            </li>
+                            <li class="form-entry cf">
+                                <label>The fine print</label>
+                                <input type="text" name="fine-print" id="fine-print">
+                            </li>
+                        </ul>
+                    </div>
+                    <button id="step-1__next">Next &#10095;</button>
+                </form>
             </div>
         </div>
         <div class="col-2">
@@ -58,6 +114,7 @@
                 </div>
             </div>
             <div class="code-snippet">
+                <h4>Copy and Paste this code:</h4>
                 <textarea id="code-copy"></textarea>
             </div>
         </div>

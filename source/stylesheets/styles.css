@@ -50,6 +50,20 @@
   padding: 40px;
 }
 
+.code-snippet {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 100%;
+}
+
+.code-snippet textarea {
+  background: #e8eff6;
+  height: 200px;
+  padding-bottom: 60px;
+  width: 100%;
+}
+
 .col-1 {
   float: left;
   margin-right: 30px;
@@ -57,6 +71,9 @@
 
 .col-2 {
   float: left;
+  margin-bottom: 60px;
+  max-width: 870px;
+  width: 100%;
 }
 
 .content {
@@ -68,21 +85,25 @@
 }
 
 .form-entry label {
-  display: inline-block;
+  font-weight: bold;
   margin-top: 10px;
-  text-align: right;
-  width: 100px;
 }
 
 .form-entry input {
+  background: #e8eff6;
+  border-left: 1px solid #b5c0cc;
+  border-top: 1px solid #b5c0cc;
   float: right;
   width: 200px;
 }
 
 .form-entry textarea {
+  background: #e8eff6;
+  border: none;
+  border-left: 1px solid #b5c0cc;
+  border-top: 1px solid #b5c0cc;
   float: right;
   width: 200px;
-  height: 80px;
 }
 
 .form__content input {
@@ -107,8 +128,6 @@
   border: 1px solid #ccc;
   padding: 20px 20px;
   margin-bottom: 20px;
-  max-width: 600px;
-  width: 100%;
 }
 
 .preview h2 {
@@ -132,6 +151,10 @@
 .form__content {
   max-width: 300px;
   width: 100%;
+}
+
+ul {
+  padding: 0px;
 }
 
 
@@ -173,4 +196,42 @@ input[type="submit"] {
   max-width: 300px;
   padding: 30px 20px;
   width: 100%;
+}
+
+/* Switches */
+.onoffswitch {
+  position: relative; width: 55px;
+  -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+  display: none;
+}
+.onoffswitch-label {
+  display: block; overflow: hidden; cursor: pointer;
+  height: 20px; padding: 0; line-height: 20px;
+  border: 0px solid #FFFFFF; border-radius: 30px;
+  background-color: #9E9E9E;
+}
+.onoffswitch-label:before {
+  content: "";
+  display: block; width: 30px; margin: -5px;
+  background: #FFFFFF;
+  position: absolute; top: 0; bottom: 0;
+  right: 31px;
+  border-radius: 30px;
+  box-shadow: 0 6px 12px 0px #757575;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+  background-color: #209bde;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+ border-color: #209bde;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+  right: 0px; 
+  background-color: #209BDE; 
+  box-shadow: 3px 6px 18px 0px rgba(0, 0, 0, 0.2);
 }

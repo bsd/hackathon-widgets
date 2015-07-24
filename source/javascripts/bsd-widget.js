@@ -29,64 +29,50 @@ $(document).ready(function(){
 			widgetType = widget.data('type'),
 			widgetAction = widget.attr('href'),
 			widgetTitle = widget.text(),
+			widgetId = params['id'],
 			widgetBg = params['bg'],
 			widgetColor = params['color'];
 
 		if(widgetType === 'form'){
 
-			//Here's an imaginary list of form fields, as if we had a JSON endpoint
-			var fields = [ 
-			    {   
-			        'name': 'email',
-			        'label': 'Email',
-			        'type': 'text',
-			        'required': 'required'
-			    },
-			    {   
-			        'name': 'firstname',
-			        'label': 'First Name',
-			        'type': 'text',
-			        'required': ''
-			    },
-			    {   
-			        'name': 'lastname',
-			        'label': 'Last Name',
-			        'type': 'text',
-			        'required': ''
-			    },
-			    {   
-			        'name': 'zip',
-			        'label': 'Postal Code',
-			        'type': 'text',
-			        'required': 'required'
-			    }   
-			];
-
-			//TODO: Add petition counter
-
-			//Create form markup based on form fields
 			var widgetMarkup = $('<div/>', {
-				    class: 'widget-wrapper',
-				    html: '<form action="' + widgetAction + '" name="signup" id="signup" class="widget-form" method="post" novalidate></form>'
-				});
+			    class: 'widget-wrapper',
+			    html: '<form action="' + widgetAction + '" name="signup" id="signup" class="widget-form" method="post" novalidate></form>'
+			});
 			widgetMarkup.prepend('<div class="widget-form-above"><p class="widget-title">' + widgetTitle + '</p></div>');
 			//widgetMarkup.find('.widget-form-above').append('<p class="widget-description">We want to stamp out late, lost and damaged deliveries. We’re calling on retailers to keep you better informed about your delivery. We need your support to ensure your deliveries are first class, first time.</p>');
-			for(var i=0; i < fields.length; i++){
-				var input;
-				if(fields[i].required){
-					input = '<input type="' + fields[i].type + '" name="' + fields[i].name + '" placeholder="' + fields[i].label + '" required />';
-				} else {
-					input = '<input type="' + fields[i].type + '" name="' + fields[i].name + '" placeholder="' + fields[i].label + '" />';
-				}
-				widgetMarkup.find('.widget-form')
-							.append(input);
-			}
-			widgetMarkup.find('.widget-form')
-						.append('<input type="submit" value="Submit" />')
-						//.after('<p class="widget-form-below"><strong>Disclaimer</strong>: By completing this form, I agree to receive email updates about this and related issues per the terms of the Which? privacy policy.</p>')
-			widgetMarkup.css('background',widgetBg).find('.widget-title').css('color',widgetColor);
-			widgetMarkup.find('.widget-form input[type="submit"]').css('background',widgetColor).css('color',widgetBg);
-			widget.replaceWith(widgetMarkup);
+
+			$.ajax({
+                url: '/form-grab.php',
+                method: "GET",
+                dataType: "json",
+                data: { formID : widgetId },
+                success : function(data) {
+                    var fields = data.data.signup_form_field;
+                    for(field in fields) {
+                        if (fields[field].is_shown === "1") {
+                            var input;
+							if(fields[field].is_required==='1'){
+								input = '<input type="text" name="' + fields[field].stg_signup_column_name + '" placeholder="' + fields[field].label + '" required />';
+							} else {
+								input = '<input type="text" name="' + fields[field].stg_signup_column_name + '" placeholder="' + fields[field].label + '" />';
+							}
+							widgetMarkup.find('.widget-form').append(input);
+                        }
+                    }
+                    widgetMarkup.find('.widget-form')
+								.append('<input type="submit" value="Submit" />')
+								//.after('<p class="widget-form-below"><strong>Disclaimer</strong>: By completing this form, I agree to receive email updates about this and related issues per the terms of the Which? privacy policy.</p>')
+					widgetMarkup.css('background',widgetBg).find('.widget-title').css('color',widgetColor);
+					widgetMarkup.find('.widget-form input[type="submit"]').css('background',widgetColor).css('color',widgetBg);
+					widget.replaceWith(widgetMarkup);
+                },
+                error : function(r2) {
+                    //Something went so wrong
+                }
+            });
+
+			//TODO: Add petition counter
 
 			//TODO: Include JS to post to signup API and handle submit via signup API
 

@@ -99,7 +99,7 @@
             <div class="code-snippet">
                 <h4>Copy and paste this code:</h4>
                 <pre><code id="code-copy">&lt;a href="<span class="code-link">#</span>" class="bsd-widget" data-type="form"&gt;<span class="code-title">Title</span>&lt;/a&gt;
-&lt;script src="/javascripts/bsd-widget.js?bg=<span class="code-bg">ffffff</span>&color=<span class="code-color">453e3e</span>"&gt;&lt;/script&gt;
+&lt;script src="/javascripts/bsd-widget.js?id=<span class="code-form-id">131</span>&bg=<span class="code-bg">ffffff</span>&color=<span class="code-color">453e3e</span>"&gt;&lt;/script&gt;
                 </code></pre>
             </div>
         </div>
@@ -108,44 +108,10 @@
                 <h2>Preview</h2>
                 <div class="preview__widget">
                     <a href="#" class="bsd-widget" data-type="form">Title</a>
-                    <script src="/javascripts/bsd-widget.js?bg=ffffff&color=453e3e"></script>
+                    <script src="/javascripts/bsd-widget.js?id=131&bg=ffffff&color=453e3e"></script>
                 </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            // $.get("/form-grab.php").done(function(data){
-            //     console.log(data.signup_form_id);
-            // });
-
-            $.ajax({
-                url: '/form-grab.php',
-                method: "GET",
-                dataType: "json",
-                data: { formID : "131" },
-                success : function(data) {
-                    // var data = r.data;
-                    // console.table(data.signup_form_field);
-                    var fields = data.data.signup_form_field;
-                    for(field in fields) {
-                        if (fields[field].is_shown === "1") {
-                            console.log(fields[field]);
-                        }
-                        // console.log(fields[field]);
-                    }
-                    var result = data.filter(function( obj ) {
-                      return obj.chapter_id == 2;
-                    });
-                    console.log(result);
-
-                },
-                error : function(r2) {
-                    console.log('Error...');
-                    console.log(r2);
-                }
-            });
-        });
-    </script>
 </body>
 </html>

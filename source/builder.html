@@ -6,20 +6,18 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/colorpicker.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/widgets.css">
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="/javascripts/colorpicker.js"></script>
 </head>
 <body class="builder">
+
+
     <h1>BSD Widget Builder</h1>
     <div class="content">
         <div class="col-1">
             <div class="panel cf">
-                <!-- <nav>
-                    <a href="/location" class="steps" id="step1">Language</a>
-                    <a href="/location" class="steps" id="step2">Fields</a>
-                    <a href="/location" class="steps" id="step3">Design</a>
-                </nav> -->
                 <h3>1. Add Fields</h3>
                 <form>
                     <div class="panel__switches">
@@ -123,10 +121,6 @@
                                 <label for="font-size">Font Size</label>
                                 <input type="number" name="font-size" id="font-size">
                             </li>
-                            <li class="form-entry cf">
-                                <label for="background-image">Background Image</label>
-                                <input type="text" name="background-image" id="background-image">
-                            </li>
                         </ul>
                     </div>
                     <button id="step-1__next">Build &#10095;</button>
@@ -137,16 +131,17 @@
             <div class="preview">
                 <h2>Preview</h2>
                 <div class="preview__widget">
-                    <div class="form__content">
+
+                    <form id="signup" class="widget-form">
                         <h3 id="widget__title">[Title]</h3>
                         <p id="widget__description">[Description]</p>
-                        <input type="text" id="form-field-1" placeholder="First Name">
-                        <input type="text" id="form-field-2" placeholder="Last Name">
-                        <input type="email" id="form-field-3" placeholder="Email">
-                        <input type="text" id="form-field-4" placeholder="Zip">
-                        <a id="widget__button">[Submit]</a>
+                        <input type="text" name="email" placeholder="Email" required="required" id="form-field-1">
+                        <input type="text" name="firstname" placeholder="First Name" required="" id="form-field-2">
+                        <input type="text" name="lastname" placeholder="Last Name" required="" id="form-field-3">
+                        <input type="text" name="zip" placeholder="Postal Code" required="required" id="form-field-4">
+                        <input type="submit" value="[Submit]">
                         <p id="widget__fine-print"></p>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="code-snippet">
@@ -157,6 +152,27 @@
     </div>
     <script type="text/javascript">
         jQuery(document).ready(function($) {
+            // $.get("/form-grab.php").done(function(data){
+            //     console.log(data.signup_form_id);
+            // });
+
+            $.ajax({
+                url: '/form-grab.php',
+                method: "GET",
+                dataType: "json",
+                success : function(r) {
+                    var data = r.data;
+                    console.log(data);
+                    // var result = data.filter(function( obj ) {
+                    //   return obj.chapter_id == 2;
+                    // });
+                    // console.log(result);
+                },
+                error : function(r2) {
+                    console.log('Error...');
+                    console.log(r2);
+                }
+            });
             $('#colorpickerField1, #colorpickerField2, #colorpickerField3').ColorPicker({
                 onSubmit: function(hsb, hex, rgb, el) {
                     $(el).val(hex);

@@ -5,55 +5,171 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/colorpicker.css">
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/javascripts/colorpicker.js"></script>
 </head>
 <body class="builder">
     <h1>BSD Widget Builder</h1>
     <div class="content">
-        <div class="panel">
-            <nav>
-                <a href="/location" class="steps" id="step1">Language</a>
-                <a href="/location" class="steps" id="step2">Fields</a>
-                <a href="/location" class="steps" id="step3">Design</a>
-            </nav>
-            <div class="panel__options">
+        <div class="col-1">
+            <div class="panel cf">
+                <!-- <nav>
+                    <a href="/location" class="steps" id="step1">Language</a>
+                    <a href="/location" class="steps" id="step2">Fields</a>
+                    <a href="/location" class="steps" id="step3">Design</a>
+                </nav> -->
+                <h3>1. Add Fields</h3>
                 <form>
-                    <ul>
-                        <li class="form-entry cf">
-                            <label>Title</label>
-                            <input type="text" name="title" id="title">
-                        </li>
-                        <li class="form-entry cf">
-                            <label>Description</label>
-                            <textarea></textarea>
-                        </li>
-                        <li class="form-entry cf">
-                            <label>Button</label>
-                            <input type="text" name="button" id="button">
-                        </li>
-                        <li class="form-entry cf">
-                            <label>That <em>fine</em> print</label>
-                            <textarea></textarea>
-                        </li>
-                    </ul>
-                    <button id="step-1__next">Next &#10095;</button>
+                    <div class="panel__switches">
+                        <ul>
+                            <li class="form-entry cf">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="title-switch" checked>
+                                    <label class="onoffswitch-label" for="title-switch"></label>
+                                </div>
+                                <label>First Name</label>
+                            </li>
+                            <li class="form-entry cf">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="desc-switch" checked>
+                                    <label class="onoffswitch-label" for="desc-switch"></label>
+                                </div>
+                                <label>Last Name</label>
+                            </li>
+                            <li class="form-entry cf">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="button-switch" checked>
+                                    <label class="onoffswitch-label" for="button-switch"></label>
+                                </div>
+                                <label>Email</label>
+                            </li>
+                            <li class="form-entry cf">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="fine-switch" checked>
+                                    <label class="onoffswitch-label" for="fine-switch"></label>
+                                </div>
+                                <label>Zip</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3>2. Add Text</h3>
+                    <div class="panel__fields">
+                        <ul>
+                            <li class="form-entry cf">
+                                <label for="title">Title</label>
+                                <input type="text" name="title" id="title" placeholder="Title">
+                            </li>
+                            <li class="form-entry cf">
+                                <label for="description">Description</label>
+                                <input type="text" name="description" id="description" placeholder="Description">
+                            </li>
+                            <li class="form-entry cf">
+                                <label for="button">Button</label>
+                                <input type="text" name="button" id="button" placeholder="Submit">
+                            </li>
+                            <li class="form-entry cf">
+                                <label for="fine-print">The fine print</label>
+                                <input type="text" name="fine-print" id="fine-print">
+                            </li>
+                        </ul>
+                    </div>
+                    <h3>3. Design</h3>
+                    <div class="panel__design">
+                        <ul>
+                            <li class="form-entry cf">
+                                <label>Font</label>
+                                <select name="fonts" id="font-picker">
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                </select>
+                            </li>
+                            <li class="form-entry cf">
+                                <label for="colorpickerField1">Background Color</label>
+                                <input type="text" maxlength="6" size="6" id="colorpickerField1" value="00ff00">
+                            </li>
+                            <li class="form-entry cf">
+                                <label for="colorpickerField1">Title font Color</label>
+                                <input type="text" maxlength="6" size="6" id="colorpickerField2" value="00ff00">
+                            </li>
+                            <li class="form-entry cf">
+                                <label for="colorpickerField1">Font Color</label>
+                                <input type="text" maxlength="6" size="6" id="colorpickerField3" value="00ff00">
+                            </li>
+                            <li class="form-entry cf">
+                                <label for="line-height">Line Height</label>
+                                <input type="number" name="line-height" id="line-height">
+                            </li>
+                            <li class="form-entry cf">
+                                <label for="font-size">Font Size</label>
+                                <input type="number" name="font-size" id="font-size">
+                            </li>
+                            <li class="form-entry cf">
+                                <label for="background-image">Background Image</label>
+                                <input type="text" name="background-image" id="background-image">
+                            </li>
+                        </ul>
+                    </div>
+                    <button id="step-1__next">Build &#10095;</button>
                 </form>
             </div>
         </div>
-        <div class="preview">
-            <h2>Preview</h2>
-            <div class="preview__widget">
-                <div class="form__content">
-                    <h3 id="widget__title">Title</h3>
-                    <p id="widget__description">Description</p>
-                    <input type="text" id="form-field-1" placeholder="First Name">
-                    <input type="text" id="form-field-2" placeholder="Last Name">
-                    <input type="email" id="form-field-3" placeholder="Email">
-                    <input type="text" id="form-field-4" placeholder="Zip">
-                    <a id="widget__button">Submit</a>
-                    <p id="widget__fine-print"></p>
+        <div class="col-2">
+            <div class="preview">
+                <h2>Preview</h2>
+                <div class="preview__widget">
+                    <div class="form__content">
+                        <h3 id="widget__title">[Title]</h3>
+                        <p id="widget__description">[Description]</p>
+                        <input type="text" id="form-field-1" placeholder="First Name">
+                        <input type="text" id="form-field-2" placeholder="Last Name">
+                        <input type="email" id="form-field-3" placeholder="Email">
+                        <input type="text" id="form-field-4" placeholder="Zip">
+                        <a id="widget__button">[Submit]</a>
+                        <p id="widget__fine-print"></p>
+                    </div>
                 </div>
+            </div>
+            <div class="code-snippet">
+                <h4>Copy and Paste this code:</h4>
+                <textarea id="code-copy"></textarea>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $('#colorpickerField1, #colorpickerField2, #colorpickerField3').ColorPicker({
+                onSubmit: function(hsb, hex, rgb, el) {
+                    $(el).val(hex);
+                    $(el).ColorPickerHide();
+                },
+                onBeforeShow: function () {
+                    $(this).ColorPickerSetColor(this.value);
+                }
+            })
+            .bind('keyup', function(){
+                $(this).ColorPickerSetColor(this.value);
+            });
+        });
+    </script>
 </body>
 </html>

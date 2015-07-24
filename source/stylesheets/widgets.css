@@ -33,19 +33,20 @@
 .widget-form-above .widget-title {
 	font-size: 1.67em;
 	font-weight: bold;
-	margin: 0 0 0.67em;
+	margin: 0 auto 0.67em;
+	width: 94%;
 }
 
 .widget-form input {
 	border: 0;
 	display: block;
 	font-size: 1.125em;
+	margin: 1.25em auto 0;
 }
 .widget-form input[type='text'] {
 	background: #eaeaea;
 	border: 2px solid #eaeaea;
 	color: #453e3e;
-	margin: 1.25em 0;
 	padding: 0.8em 3%;
 	width: 94%;
 }
@@ -57,7 +58,6 @@
 	background: #453e3e;
 	color: white;
 	font-weight: bold;
-	margin: 0 auto;
 	padding: 0.8em 0;
 	width: 25%;
 }

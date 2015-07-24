@@ -14,7 +14,7 @@
     <h1>BSD Widget Builder</h1>
     <div class="content">
         <div class="col-1">
-            <div class="panel">
+            <div class="panel cf">
                 <!-- <nav>
                     <a href="/location" class="steps" id="step1">Language</a>
                     <a href="/location" class="steps" id="step2">Fields</a>
@@ -58,19 +58,19 @@
                     <div class="panel__fields">
                         <ul>
                             <li class="form-entry cf">
-                                <label>Title</label>
+                                <label for="title">Title</label>
                                 <input type="text" name="title" id="title" placeholder="Title">
                             </li>
                             <li class="form-entry cf">
-                                <label>Description</label>
+                                <label for="description">Description</label>
                                 <input type="text" name="description" id="description" placeholder="Description">
                             </li>
                             <li class="form-entry cf">
-                                <label>Button</label>
+                                <label for="button">Button</label>
                                 <input type="text" name="button" id="button" placeholder="Submit">
                             </li>
                             <li class="form-entry cf">
-                                <label>The fine print</label>
+                                <label for="fine-print">The fine print</label>
                                 <input type="text" name="fine-print" id="fine-print">
                             </li>
                         </ul>
@@ -104,20 +104,32 @@
                                 </select>
                             </li>
                             <li class="form-entry cf">
-                                <label>Background Color</label>
+                                <label for="colorpickerField1">Background Color</label>
                                 <input type="text" maxlength="6" size="6" id="colorpickerField1" value="00ff00">
                             </li>
                             <li class="form-entry cf">
-                                <label>Title font Color</label>
+                                <label for="colorpickerField1">Title font Color</label>
                                 <input type="text" maxlength="6" size="6" id="colorpickerField2" value="00ff00">
                             </li>
                             <li class="form-entry cf">
-                                <label>Font Color</label>
+                                <label for="colorpickerField1">Font Color</label>
                                 <input type="text" maxlength="6" size="6" id="colorpickerField3" value="00ff00">
+                            </li>
+                            <li class="form-entry cf">
+                                <label for="line-height">Line Height</label>
+                                <input type="number" name="line-height" id="line-height">
+                            </li>
+                            <li class="form-entry cf">
+                                <label for="font-size">Font Size</label>
+                                <input type="number" name="font-size" id="font-size">
+                            </li>
+                            <li class="form-entry cf">
+                                <label for="background-image">Background Image</label>
+                                <input type="text" name="background-image" id="background-image">
                             </li>
                         </ul>
                     </div>
-                    <button id="step-1__next">Next &#10095;</button>
+                    <button id="step-1__next">Build &#10095;</button>
                 </form>
             </div>
         </div>
@@ -126,13 +138,13 @@
                 <h2>Preview</h2>
                 <div class="preview__widget">
                     <div class="form__content">
-                        <h3 id="widget__title">Title</h3>
-                        <p id="widget__description">Description</p>
+                        <h3 id="widget__title">[Title]</h3>
+                        <p id="widget__description">[Description]</p>
                         <input type="text" id="form-field-1" placeholder="First Name">
                         <input type="text" id="form-field-2" placeholder="Last Name">
                         <input type="email" id="form-field-3" placeholder="Email">
                         <input type="text" id="form-field-4" placeholder="Zip">
-                        <a id="widget__button">Submit</a>
+                        <a id="widget__button">[Submit]</a>
                         <p id="widget__fine-print"></p>
                     </div>
                 </div>

@@ -66,6 +66,7 @@
 
 .col-1 {
   float: left;
+  margin-bottom: 60px;
   margin-right: 30px;
 }
 
@@ -89,8 +90,22 @@
   margin-top: 10px;
 }
 
+.panel__switches label {
+  display: block;
+  margin: 10px 0px 30px;
+}
+
 .form-entry input {
   background: #e8eff6;
+  border-left: 1px solid #b5c0cc;
+  border-top: 1px solid #b5c0cc;
+  float: right;
+  width: 200px;
+}
+
+.form-entry select {
+  background: #e8eff6;
+  border: none;
   border-left: 1px solid #b5c0cc;
   border-top: 1px solid #b5c0cc;
   float: right;
@@ -234,4 +249,9 @@ input[type="submit"] {
   right: 0px; 
   background-color: #209BDE; 
   box-shadow: 3px 6px 18px 0px rgba(0, 0, 0, 0.2);
+}
+
+.onoffswitch label {
+  margin: 0px;
+  display: block;
 }

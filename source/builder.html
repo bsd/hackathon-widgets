@@ -5,6 +5,10 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/colorpicker.css">
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/javascripts/colorpicker.js"></script>
 </head>
 <body class="builder">
     <h1>BSD Widget Builder</h1>
@@ -18,53 +22,52 @@
                 </nav> -->
                 <h3>1. Add Fields</h3>
                 <form>
-                    <div class="panel__options">
+                    <div class="panel__switches">
                         <ul>
                             <li class="form-entry cf">
                                 <div class="onoffswitch">
                                     <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="title-switch" checked>
                                     <label class="onoffswitch-label" for="title-switch"></label>
                                 </div>
-                                <label>Title</label>
+                                <label>First Name</label>
                             </li>
                             <li class="form-entry cf">
                                 <div class="onoffswitch">
                                     <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="desc-switch" checked>
                                     <label class="onoffswitch-label" for="desc-switch"></label>
                                 </div>
-                                <label>Description</label>
+                                <label>Last Name</label>
                             </li>
                             <li class="form-entry cf">
                                 <div class="onoffswitch">
                                     <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="button-switch" checked>
                                     <label class="onoffswitch-label" for="button-switch"></label>
                                 </div>
-                                <label>Button</label>
+                                <label>Email</label>
                             </li>
                             <li class="form-entry cf">
                                 <div class="onoffswitch">
                                     <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="fine-switch" checked>
                                     <label class="onoffswitch-label" for="fine-switch"></label>
                                 </div>
-                                <label>The fine print</label>
+                                <label>Zip</label>
                             </li>
                         </ul>
-                        
                     </div>
                     <h3>2. Add Text</h3>
-                    <div class="panel__options">
+                    <div class="panel__fields">
                         <ul>
                             <li class="form-entry cf">
                                 <label>Title</label>
-                                <input type="text" name="title" id="title">
+                                <input type="text" name="title" id="title" placeholder="Title">
                             </li>
                             <li class="form-entry cf">
                                 <label>Description</label>
-                                <input type="text" name="description" id="description">
+                                <input type="text" name="description" id="description" placeholder="Description">
                             </li>
                             <li class="form-entry cf">
                                 <label>Button</label>
-                                <input type="text" name="button" id="button">
+                                <input type="text" name="button" id="button" placeholder="Submit">
                             </li>
                             <li class="form-entry cf">
                                 <label>The fine print</label>
@@ -73,23 +76,44 @@
                         </ul>
                     </div>
                     <h3>3. Design</h3>
-                    <div class="panel__options">
+                    <div class="panel__design">
                         <ul>
                             <li class="form-entry cf">
-                                <label>Title</label>
-                                <input type="text" name="title" id="title">
+                                <label>Font</label>
+                                <select name="fonts" id="font-picker">
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                    <option value="lato">Lato</option>
+                                </select>
                             </li>
                             <li class="form-entry cf">
-                                <label>Description</label>
-                                <input type="text" name="description" id="description">
+                                <label>Background Color</label>
+                                <input type="text" maxlength="6" size="6" id="colorpickerField1" value="00ff00">
                             </li>
                             <li class="form-entry cf">
-                                <label>Button</label>
-                                <input type="text" name="button" id="button">
+                                <label>Title font Color</label>
+                                <input type="text" maxlength="6" size="6" id="colorpickerField2" value="00ff00">
                             </li>
                             <li class="form-entry cf">
-                                <label>The fine print</label>
-                                <input type="text" name="fine-print" id="fine-print">
+                                <label>Font Color</label>
+                                <input type="text" maxlength="6" size="6" id="colorpickerField3" value="00ff00">
                             </li>
                         </ul>
                     </div>
@@ -119,5 +143,21 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $('#colorpickerField1, #colorpickerField2, #colorpickerField3').ColorPicker({
+                onSubmit: function(hsb, hex, rgb, el) {
+                    $(el).val(hex);
+                    $(el).ColorPickerHide();
+                },
+                onBeforeShow: function () {
+                    $(this).ColorPickerSetColor(this.value);
+                }
+            })
+            .bind('keyup', function(){
+                $(this).ColorPickerSetColor(this.value);
+            });
+        });
+    </script>
 </body>
 </html>
